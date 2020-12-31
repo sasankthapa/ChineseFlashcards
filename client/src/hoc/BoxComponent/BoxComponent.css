@@ -1,0 +1,11 @@
+.box-component-HOC{
+    z-index:1000;
+
+}
+
+.box-component-container{
+    padding:20px;
+    background-color:white;
+    border:3px solid #7a96c2;
+    border-radius:10px;
+}

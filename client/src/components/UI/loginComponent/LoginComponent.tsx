@@ -1,18 +1,15 @@
 import React from 'react';
 import BoxComponent from '../../../hoc/BoxComponent/BoxComponent';
-import Form, {formElement} from '../../Form/Form';
-
-interface LoginComponentProps{
-    handleLogin: (username:string,password:string) => void;
-}
+import Form from '../../Form/Form';
+import {LoginComponentProps,formElement, FormProps} from '../../../types/UI';
 
 const LoginComponent:React.FC<LoginComponentProps> = ({handleLogin}) => {
 
-    const [username,setUsername] = React.useState('');
+    const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
 
-    const updateUserName:formElement["handler"]=(e)=>{
-        setUsername(e.target.value); 
+    const updateEmail:formElement["handler"]=(e)=>{
+        setEmail(e.target.value); 
     }
 
     const updatePassword:formElement["handler"]=(e)=>{
@@ -20,13 +17,22 @@ const LoginComponent:React.FC<LoginComponentProps> = ({handleLogin}) => {
     }
 
     const loginElements:formElement[]=[
-        {label:'Username',type:'text',value:username,handler:updateUserName},
+        {label:'Email',type:'text',value:email,handler:updateEmail},
         {label:'Password',type:'password',value:password,handler:updatePassword}
     ];
 
+    const onClick:FormProps["onClick"]=()=>{
+        handleLogin(email,password); 
+    }
+
     return <BoxComponent>
         <div>
-            <Form title="Login" elements={loginElements}/>
+            <Form 
+                title="Login User" 
+                elements={loginElements} 
+                buttonName="Login"
+                onClick={onClick}
+            />
         </div>
     </BoxComponent>
 }

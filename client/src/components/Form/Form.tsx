@@ -1,29 +1,28 @@
-import React, {ChangeEvent} from 'react';
+import React, {FormEvent} from 'react';
 import './Form.css'
+import {FormProps} from '../../types/UI';
 
-export type formElement = {
-    label : string,
-    type : string, 
-    value : string,
-    handler : (e:ChangeEvent<HTMLInputElement>) => void
-};
+const Form:React.FC<FormProps> = ({title,elements,buttonName,onClick}) => {
 
-interface FormProps{
-    title: string;
-    elements: formElement[]
-}
+    const submit=(e:FormEvent<HTMLButtonElement>)=>{
+        e.preventDefault();
+        onClick();
+    }
 
-const Form:React.FC<FormProps> = ({title,elements}) => {
     return (
         <form className="form">
             <h2>{title}</h2>
             {elements.map((element)=>{
                 return <div key={element.label} className="form-control">
                     <label htmlFor={element.label}>{element.label}</label>
-                    <input type={element.type} id={element.label} />
+                    <input 
+                        onChange={element.handler}
+                        value={element.value}
+                        type={element.type} 
+                        id={element.label} />
                 </div>
             })}
-            <button type="submit">Submit</button>
+            <button onClick={submit} type="submit">{buttonName}</button>
         </form>
     );
 }

@@ -3,7 +3,7 @@ import BoxComponent from '../../../hoc/BoxComponent/BoxComponent';
 import Form from '../../Form/Form';
 import {RegisterComponentProps, formElement, FormProps} from '../../../types/UI';
 
-const RegisterComponent:React.FC<RegisterComponentProps> = ({handleRegister}) =>{
+const RegisterComponent:React.FC<RegisterComponentProps> = ({handleRegister,closeForm}) =>{
 
     const [name,setName] = React.useState('');
     const [email,setEmail] = React.useState('');
@@ -38,6 +38,7 @@ const RegisterComponent:React.FC<RegisterComponentProps> = ({handleRegister}) =>
                 elements={registerElements} 
                 buttonName="Register"
                 onClick={onClick}
+                closeForm={closeForm}
             />
         </div>
     </BoxComponent>

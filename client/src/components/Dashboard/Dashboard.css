@@ -1,0 +1,75 @@
+.Dashboard{
+    box-sizing: content-box;
+    width:100%;
+    height:100%;
+    border:5px solid black;
+    border-radius:10px;
+    box-shadow:5px 5px 2px cadetblue;
+}
+
+.DashboardHeader{
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-bottom: 5px solid black;
+    text-align:center;
+}
+
+.DashboardHeader *{
+    padding:10px;
+    border-right:3px solid black;
+    margin: 0;
+}
+
+.DashboardHeader p:nth-child(5){
+    border-right:none;
+}
+
+.DashboardMain{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(5,minmax(0,1fr));
+    height:100%;
+    justify-items: center;
+    grid-gap:30px;
+    padding:15px 20px;
+}
+
+@media (max-width:888px){
+    .DashboardMain{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(4,minmax(0,1fr));
+    }
+}
+
+@media (max-width:450px){
+    .DashboardMain{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(3,minmax(0,1fr));
+    }
+}
+
+.clickable{
+    cursor:pointer;
+}
+
+.scrollable{
+    overflow: auto;
+}
+
+.arrow{
+    border:solid black;
+    border-width: 0 3px 3px 0;
+    display:inline-block;
+    padding:3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}

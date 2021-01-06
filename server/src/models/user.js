@@ -45,7 +45,7 @@ userSchema.virtual('usercards',{
 userSchema.methods.generateAuthToken = async function(){
     const user=this;
 
-    const token=jwt.sign({_id :user._id.toString()},process.env.JWT_SECRET,{expiresIn:'1 hour'});
+    const token=jwt.sign({_id :user._id.toString()},process.env.JWT_SECRET,{expiresIn:'5 hour'});
 
     user.tokens=user.tokens.concat({token});
     await user.save();

@@ -3,7 +3,7 @@ import BoxComponent from '../../../hoc/BoxComponent/BoxComponent';
 import Form from '../../Form/Form';
 import {LoginComponentProps,formElement, FormProps} from '../../../types/UI';
 
-const LoginComponent:React.FC<LoginComponentProps> = ({handleLogin}) => {
+const LoginComponent:React.FC<LoginComponentProps> = ({handleLogin,closeForm}) => {
 
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
@@ -32,6 +32,7 @@ const LoginComponent:React.FC<LoginComponentProps> = ({handleLogin}) => {
                 elements={loginElements} 
                 buttonName="Login"
                 onClick={onClick}
+                closeForm={closeForm}
             />
         </div>
     </BoxComponent>

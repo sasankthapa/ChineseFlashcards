@@ -1,0 +1,51 @@
+.Focus{
+    width:50vw;
+    height:40vh;
+    display:block;
+    padding:0;
+    text-align: center;
+}
+
+.Focus *{
+    margin:0;
+    padding:0;
+}
+
+.Focus #main{
+    position: absolute;
+    left:50%;
+    top:40%;
+    transform: translate(-50%,-50%);
+    font-size: 90px;
+}
+
+.Focus #next{
+    top:50%;
+    left:90%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+
+.Focus #prev{
+    top:50%;
+    left:10%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+
+}
+
+.Focus #change1{
+    top:90%;
+    left:10%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+
+}
+
+.Focus #change2{
+    top:90%;
+    left:90%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+

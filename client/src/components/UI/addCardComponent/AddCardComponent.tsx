@@ -3,7 +3,7 @@ import BoxComponent from '../../../hoc/BoxComponent/BoxComponent';
 import Form from '../../Form/Form';
 import {AddCardComponentProps, formElement, FormProps} from '../../../types/UI';
 
-const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard}) => {
+const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard,closeForm}) => {
 
     const [meaning,setMeaning] = React.useState('');
     const [character,setCharacter] = React.useState('');
@@ -22,9 +22,9 @@ const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard}) => {
     }
 
     const addingCardElements:formElement[]=[
-        {label:'Meaning',type:'text',value:meaning,handler:updateMeaning},
         {label:'Character',type:'text',value:character,handler:updateCharacter},
-        {label:'Pinyin',type:'text',value:pinyin,handler:updatePinyin}
+        {label:'Pinyin',type:'text',value:pinyin,handler:updatePinyin},
+        {label:'Meaning',type:'text',value:meaning,handler:updateMeaning},
     ];
 
     const onClick:FormProps["onClick"]=()=>{
@@ -36,8 +36,9 @@ const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard}) => {
             <Form 
                 title="Add Card" 
                 elements={addingCardElements} 
-                buttonName="Login"
+                buttonName="add"
                 onClick={onClick}
+                closeForm={closeForm}
             />
         </div>
     </BoxComponent>

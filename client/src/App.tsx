@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Header from './components/Header/Header';
 import './App.css';
+import Dashboard from './components/Dashboard/Dashboard';
 import LoginComponent from './components/UI/loginComponent/LoginComponent'
 import RegisterComponent from './components/UI/registerComponent/RegisterComponent'
 import {handleLogin,handleRegister} from './types/UI';
@@ -11,8 +12,6 @@ interface AppState{
     token:string;
     loggingIn:boolean;
     loggedIn:boolean;
-    addingCard:boolean;
-    focused:boolean;
     registering:boolean;
 }
 
@@ -23,50 +22,39 @@ class App extends React.Component<{},AppState,{}>{
         token:'',
         loggingIn:false,
         loggedIn:false,
-        addingCard:false,
-        focused:false,
         registering:false
     }
 
     render(){
         let toRender:any='Please Login';
         if(this.state.loggingIn){
-            toRender=<LoginComponent handleLogin={this.handleLogin}/>
+            toRender=<LoginComponent handleLogin={this.handleLogin} closeForm={()=>this.setLoggingIn(false)}/>
         }else if(this.state.registering){
-            toRender=<RegisterComponent handleRegister={this.handleRegister}/> 
-        }else if(this.state.focused){
-
+            toRender=<RegisterComponent handleRegister={this.handleRegister} closeForm={()=>this.setRegistering(false)}/> 
         }else if(this.state.loggedIn){
-            toRender=<div>Logged In</div>
+            toRender=<Dashboard token={this.state.token}/>
         }
         return (
             <div className="App">
                 <Header 
                     name={this.state.name}
-                    loginIn={this.setLoggingIn.bind(this)} 
-                    logout={this.handleLogout.bind(this)}
-                    register={this.setRegistering.bind(this)}
-                    addCard={this.setAddingCard.bind(this)}
+                    loginIn={()=>this.setLoggingIn(true)} 
+                    logout={()=>this.handleLogout()}
+                    register={()=>this.setRegistering(true)}
                 />
                 <div className="main">
-                {this.state.loggedIn? 
-                    <h1>loggedIn</h1>:
-                    toRender}
+                    {toRender}
                 </div>
            </div>
       );
     }
 
-    private setLoggingIn = () => {
-        this.setState({loggingIn:true});
+    private setLoggingIn = (value:boolean) => {
+        this.setState({loggingIn:value});
     }
 
-    private setRegistering = () => {
-        this.setState({registering:true});
-    }
-
-    private setAddingCard = () => {
-        this.setState({addingCard:true});
+    private setRegistering = (value:boolean) => {
+        this.setState({registering:value});
     }
 
     private handleLogin:handleLogin = (email,password) => {
@@ -84,7 +72,7 @@ class App extends React.Component<{},AppState,{}>{
     }
     
     private handleLogout = () => {
-        this.setState({token:'',loggedIn:false,focused:false})
+        this.setState({name:'',token:'',loggedIn:false})
         logoutAccount(this.state.token);
     }
 }

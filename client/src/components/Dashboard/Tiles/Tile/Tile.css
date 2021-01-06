@@ -1,0 +1,67 @@
+.tile{
+    position: relative;
+    background-color: lightblue;
+    width:80%;
+    height:150px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:3px solid black;
+    border-radius:10px;
+    font-size: x-large;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+.tile p{
+    font-size: 50px;
+}
+
+@media (max-width:600px){
+    .tile{
+        width: 100%;
+    }
+
+    .tile p{
+        font-size:30px;
+    }
+}
+
+@media (max-height:885px){
+    .tile{
+        height: 120px;
+    }
+}
+
+.deleting{
+    transition: 0.5s opacity ease-in-out, 0.5s background-color ease-in;
+}
+
+.tile.deleting:hover{
+    opacity:0.5;
+    background-color: royalblue;
+}
+
+.tile small{
+    position: absolute;
+    font-size: small;
+    top:90%;
+    left:70%;
+    transform: translate(-50%,-50%);
+}
+
+.flip{
+    /*animation:flip 0.5s linear */
+}
+
+@keyframes flip{
+    0%{
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    50%{
+        transform: rotateY(180deg) rotateX(180deg);
+    }
+    100%{
+        transform: rotateY(-0deg) rotateX(-0deg);
+    }
+}

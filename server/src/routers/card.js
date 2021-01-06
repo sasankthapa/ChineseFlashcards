@@ -34,13 +34,15 @@ router.get('/cards',auth,async (req,res)=>{
 })
 
 router.delete('/cards/:id',auth,async(req,res)=>{
+    console.log(req.params.id,req.user._id)
     try{
-        const card=await Task.findOneAndDelete({_id:req.params.id,owner:req.user._id})
+        const card=await Card.findOneAndDelete({_id:req.params.id,owner:req.user._id})
         if(!card){
             return res.status(404).send();
         }
         res.send(card);
     }catch(e){
+        console.log(e);
         res.status(500).send();
     }
 })

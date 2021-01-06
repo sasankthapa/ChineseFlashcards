@@ -5,10 +5,9 @@ interface headerProps{
     loginIn:()=>void;
     logout:()=>void;
     register:()=>void;
-    addCard:()=>void;
 }
 
-const Header:React.FC<headerProps> = ({name,loginIn,logout,register,addCard}) => {
+const Header:React.FC<headerProps> = ({name,loginIn,logout,register}) => {
     return <div className="Header">
         <p id="title">Chinese FlashCards</p>
         {name!==''?

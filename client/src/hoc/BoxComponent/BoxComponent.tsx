@@ -9,7 +9,7 @@ const BoxComponent = (props:any) => {
                 {props.children} 
             </div>
         </div>
-        <Backdrop/>
+        <Backdrop show/>
     </React.Fragment>
 }
 

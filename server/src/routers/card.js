@@ -6,6 +6,7 @@ const router=express.Router();
 router.post('/cards',auth,async(req,res)=>{
     const card=new Card({
         ...req.body,
+        pinyin,
         owner:req.user._id
     });
 

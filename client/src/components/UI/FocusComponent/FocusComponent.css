@@ -16,7 +16,7 @@
     left:50%;
     top:40%;
     transform: translate(-50%,-50%);
-    font-size: 90px;
+    font-size: 80px;
 }
 
 .Focus #next{
@@ -24,6 +24,7 @@
     left:90%;
     transform: translate(-50%,-50%);
     position: absolute;
+    font-size: 32px;
 }
 
 .Focus #prev{
@@ -31,21 +32,32 @@
     left:10%;
     transform: translate(-50%,-50%);
     position: absolute;
-
+    font-size: 32px;
 }
 
 .Focus #change1{
-    top:90%;
-    left:10%;
+    top:88%;
+    left:25%;
     transform: translate(-50%,-50%);
     position: absolute;
-
+    color:royalblue;
+    font-size: 29px;
+    padding:5px;
+    border:1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 .Focus #change2{
-    top:90%;
-    left:90%;
+    top:88%;
+    left:75%;
     transform: translate(-50%,-50%);
     position: absolute;
+    color:royalblue;
+    font-size: 29px;
+    padding:5px;
+    border:1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
 }
 

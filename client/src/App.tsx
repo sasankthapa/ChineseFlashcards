@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Header from './components/Header/Header';
+import SideDrawer from './components/Sidedrawer/SideDrawer';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoginComponent from './components/UI/loginComponent/LoginComponent'
@@ -36,6 +37,13 @@ class App extends React.Component<{},AppState,{}>{
         }
         return (
             <div className="App">
+                <SideDrawer 
+                    open={true}
+                    name={this.state.name}
+                    loginIn={()=>this.setLoggingIn(true)} 
+                    logout={()=>this.handleLogout()}
+                    register={()=>this.setRegistering(true)}
+                />
                 <Header 
                     name={this.state.name}
                     loginIn={()=>this.setLoggingIn(true)} 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEventHandler} from 'react';
 import BoxComponent from '../../../hoc/BoxComponent/BoxComponent';
 import {tilesCurrent} from '../../../types/Dashboard';
 import {FocusCardComponentProps} from '../../../types/UI'
@@ -16,13 +16,43 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
 
     const getCurrent = current==='inCharacter'?'character':current==='inMeaning'?'meaning':'pinyin';
 
+    const changeToString = (val:string) => {
+        switch(val){
+            case 'inCharacter':
+                return 'Character';
+            case 'inMeaning':
+                return 'Meaning';
+            case 'inPinyin':
+                return 'Pinyin';
+        }
+    }
+
+    const elementChangeHandler = (val:"next"|"prev")=>{
+        if(val==="next"){
+            if(!(element+1>=elements.length)){
+                setElement(element+1); 
+            }
+        }else if(val==="prev"){
+            if(!(element-1<=0)){
+                setElement(element-1)
+            }
+        }
+    }
+
+    const keyDownHandler:KeyboardEventHandler<HTMLDivElement>=(e)=>{
+        console.log("ethuoe");
+        console.log(e.key);
+    }
+
+    const toDisplay=elements[element][getCurrent];
+    const displayStyle=toDisplay.length>10?{fontSize:'30px'}:{};
     return <BoxComponent>
-        <div className="Focus">
-            <p id="main">{elements[element][getCurrent]}</p>            
-            <span className="clickable" id="next" onClick={()=>setElement(element+1)}>next</span>
-            <span className="clickable" id="prev" onClick={()=>setElement(element-1)}>prev</span>
-            <span className="clickable" id="change1" onClick={()=>setCurrent(arr[0] as tilesCurrent)}>{arr[0]}</span>
-            <span className="clickable" id="change2" onClick={()=>setCurrent(arr[1] as tilesCurrent)}>{arr[1]}</span>
+        <div className="Focus" onKeyDown={keyDownHandler} tabIndex={0}>
+            <p id="main" style={displayStyle}>{toDisplay}</p>            
+            <span className="clickable" id="next" onClick={()=>elementChangeHandler("next")}>Next</span>
+            <span className="clickable" id="prev" onClick={()=>elementChangeHandler("prev")}>Prev</span>
+            <span className="clickable" id="change1" onClick={()=>setCurrent(arr[0] as tilesCurrent)}>{changeToString(arr[0])}</span>
+            <span className="clickable" id="change2" onClick={()=>setCurrent(arr[1] as tilesCurrent)}>{changeToString(arr[1])}</span>
         </div>
     </BoxComponent>
 }

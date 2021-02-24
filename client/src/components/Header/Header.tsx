@@ -9,7 +9,7 @@ interface headerProps{
 
 const Header:React.FC<headerProps> = ({name,loginIn,logout,register}) => {
     return <div className="Header">
-        <p id="title">Chinese FlashCards</p>
+        <p id="title">中文FlashCards</p>
         {name!==''?
             <React.Fragment>
                 <p>{name}</p>

@@ -22,9 +22,9 @@ const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard,closeFo
     }
 
     const addingCardElements:formElement[]=[
-        {label:'Character',type:'text',value:character,handler:updateCharacter},
-        {label:'Pinyin',type:'text',value:pinyin,handler:updatePinyin},
-        {label:'Meaning',type:'text',value:meaning,handler:updateMeaning},
+        {label:'Character',type:'text',value:character,handler:updateCharacter,placeholder:'你好'},
+        {label:'Pinyin',type:'text',value:pinyin,handler:updatePinyin,placeholder:'ni3hao3'},
+        {label:'Meaning',type:'text',value:meaning,handler:updateMeaning,placeholder:'Hello'},
     ];
 
     const onClick:FormProps["onClick"]=()=>{
@@ -36,7 +36,7 @@ const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard,closeFo
             <Form 
                 title="Add Card" 
                 elements={addingCardElements} 
-                buttonName="add"
+                buttonName="Add Card"
                 onClick={onClick}
                 closeForm={closeForm}
             />

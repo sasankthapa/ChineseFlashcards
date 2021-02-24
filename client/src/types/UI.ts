@@ -29,7 +29,8 @@ export type formElement = {
     label : string,
     type : string, 
     value : string,
-    handler : (e:ChangeEvent<HTMLInputElement>) => void
+    handler : (e:ChangeEvent<HTMLInputElement>) => void;
+    placeholder?:string;
 };
 
 export interface FormProps{

@@ -40,8 +40,22 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
     }
 
     const keyDownHandler:KeyboardEventHandler<HTMLDivElement>=(e)=>{
-        console.log("ethuoe");
-        console.log(e.key);
+        console.log(typeof e.key);
+        if(e.key==="ArrowLeft"){
+            elementChangeHandler("prev")
+        }else if(e.key==="ArrowRight"){
+            elementChangeHandler("next")
+        }else if(e.key==="ArrowUp"){
+            setCurrent(arr[0] as tilesCurrent);
+        }else if(e.key==="ArrowDown"){
+            setCurrent(arr[1] as tilesCurrent);
+        }else if(e.key==="m"){
+            setCurrent('inMeaning' as tilesCurrent);
+        }else if(e.key==="p"){
+            setCurrent('inPinyin' as tilesCurrent);
+        }else if(e.key==="c"){
+            setCurrent('inCharacter' as tilesCurrent);
+        }
     }
 
     const toDisplay=elements[element][getCurrent];
@@ -49,10 +63,12 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
     return <BoxComponent>
         <div className="Focus" onKeyDown={keyDownHandler} tabIndex={0}>
             <p id="main" style={displayStyle}>{toDisplay}</p>            
+            <span id="count">{element+1}/{elements.length}</span>
             <span className="clickable" id="next" onClick={()=>elementChangeHandler("next")}>Next</span>
             <span className="clickable" id="prev" onClick={()=>elementChangeHandler("prev")}>Prev</span>
             <span className="clickable" id="change1" onClick={()=>setCurrent(arr[0] as tilesCurrent)}>{changeToString(arr[0])}</span>
             <span className="clickable" id="change2" onClick={()=>setCurrent(arr[1] as tilesCurrent)}>{changeToString(arr[1])}</span>
+            <span className="close_button clickable" onClick={()=>close()}>x</span>
         </div>
     </BoxComponent>
 }

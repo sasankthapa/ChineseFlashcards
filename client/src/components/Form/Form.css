@@ -37,17 +37,19 @@
 }
 
 .form-control input{
-    border: 2px solid #f0f0f0;
+    border: 2px solid #777;
     border-radius:4px;
     display:block;
     width:100%;
     padding:10px;
     font-size:14px;
+    transition: border 0.1s ease;
 }
 
 .form-control input:focus{
     outline: 0;
-    border-color: #777;
+    border-width: 3px;
+    border-color: black;
 }
 
 .form button{

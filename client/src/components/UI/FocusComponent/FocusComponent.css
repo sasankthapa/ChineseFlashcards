@@ -1,4 +1,5 @@
 .Focus{
+    position: relative;
     width:50vw;
     height:40vh;
     display:block;
@@ -17,6 +18,13 @@
     top:40%;
     transform: translate(-50%,-50%);
     font-size: 80px;
+}
+
+.Focus #count{
+    position: absolute;
+    top:5%;
+    left:50%;
+    transform: translate(-50%,-50%);
 }
 
 .Focus #next{
@@ -61,3 +69,18 @@
     font-weight: bold;
 }
 
+.close_button{
+    position: absolute;
+    padding:0;
+    margin:0;
+    font-size: 2em;
+    top:15px;
+    right:5px;
+    transform: translate(-50%,-50%);
+    width:2em;
+    transition:all 0.5s linear;
+}
+
+.close_button:hover{
+    color:orange;
+}

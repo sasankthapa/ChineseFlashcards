@@ -67,14 +67,14 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
     private changeMaxElements=(width:number,height:number)=>{
         let rowNum=4;
         let colNum=5;
-        if(width<450){
+        if(width <450){
             colNum=3;
-        }else if(width<888){
+        }else if(width <888){
             colNum=4;
         }
-        if(height<660){
+        if(height <660){
             rowNum=2;
-        }else if(height<850){
+        }else if(height <850){
             rowNum=3;
         }
 
@@ -85,8 +85,8 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
         let maxPage=Math.ceil(this.state.elements.length/this.state.itemsOnPage);
         let minPage=1;
         if(todo==="next"){
-            if(this.state.page===maxPage) return
-            this.setState(prevState=>({page:prevState.page+1}));    
+            if(this.state.page>=maxPage) return
+            this.setState(prevState => ({page:prevState.page+1}));    
         }else{
             if(this.state.page===minPage) return
             this.setState(prevState=>({page:prevState.page-1}));    

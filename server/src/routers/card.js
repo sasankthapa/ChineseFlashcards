@@ -34,7 +34,6 @@ router.get('/cards',auth,async (req,res)=>{
 })
 
 router.delete('/cards/:id',auth,async(req,res)=>{
-    console.log(req.params.id,req.user._id)
     try{
         const card=await Card.findOneAndDelete({_id:req.params.id,owner:req.user._id})
         if(!card){

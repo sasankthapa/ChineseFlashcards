@@ -35,7 +35,6 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
                 setElement(element+1); 
             }
         }else if(val==="prev"){
-            console.log(element)
             if(!(element-1<0)){
                 setElement(element-1)
             }
@@ -43,7 +42,6 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
     }
 
     const keyDownHandler:KeyboardEventHandler<HTMLDivElement>=(e)=>{
-        console.log(typeof e.key);
         if(e.key==="ArrowLeft"){
             elementChangeHandler("prev")
         }else if(e.key==="ArrowRight"){

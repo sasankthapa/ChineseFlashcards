@@ -1,4 +1,4 @@
-import React,{MouseEvent} from 'react';
+import React from 'react';
 import {TileProps} from '../../../../types/Dashboard';
 import './Tile.css';
 
@@ -53,7 +53,6 @@ const Tile:React.FC<TileProps> = ({character,tilesCurrent,changeCurrent,deleting
             break;
     }
 
-    const getCurrent = current==='inCharacter'?'Character':current==='inMeaning'?'Meaning':'Pinyin';
     return <div ref={tile} onClick={deletingCard?deleteCard:switchTile} className={deletingCard?"tile deleting":"tile"}>
         <p>{toRender}</p> 
     </div>

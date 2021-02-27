@@ -3,9 +3,10 @@ import Tiles from './Tiles/Tiles';
 import AddCardComponent from '../UI/addCardComponent/AddCardComponent';
 import FocusComponent from '../UI/FocusComponent/FocusComponent';
 import {handleAddCard} from '../../types/UI'
-import {tilesCurrent,DashboardProps,DashboardState} from '../../types/Dashboard';
+import {tilesCurrent,DashboardProps,DashboardState, character} from '../../types/Dashboard';
 import {getAllCards,addCard,deleteCard} from '../../API/axios';
 import './Dashboard.css';
+import searchIcon from '../../assets/searchIcon.jpeg';
 
 class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
 
@@ -17,7 +18,9 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
         deletingCard:false,
         focus:false,
         page:1,
-        itemsOnPage:20
+        itemsOnPage:20,
+        searching:false,
+        displayingElements:[]
     }
 
    private shuffleArray(arr:Array<any>) {
@@ -98,7 +101,7 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
         .then((data)=>{
             if(data){
                 data=this.shuffleArray(data);
-                this.setState({elements:data})
+                this.setState({elements:data,displayingElements:data})
             }
         });
     }
@@ -108,6 +111,21 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
             this.getAllCards();
         }
         window.addEventListener('resize', ()=>this.changeMaxElements(window.innerWidth,window.innerHeight));
+    }
+
+    private filterSearch(val:string){
+        if(val.length===0){
+            return this.setState({displayingElements:this.state.elements,searching:false}); 
+        }
+        if(this.state.elements.length>=0){
+            const filtered=this.state.elements.filter((elem:character)=>{
+                if(elem.meaning.toLowerCase().includes(val.toLowerCase())||elem.character.includes(val)||elem.pinyin.includes(val)){
+                    return true;
+                }
+                return false;
+            })
+            this.setState({displayingElements:filtered,searching:true})
+        }
     }
 
     render(){
@@ -127,11 +145,15 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
             <div className="scrollable">
                 <div className="DashboardMain">
                     <Tiles
-                        elements={this.state.elements.slice(0+elementsOffset, this.state.itemsOnPage+elementsOffset)} 
+                        elements={this.state.displayingElements.slice(0+elementsOffset, this.state.itemsOnPage+elementsOffset)} 
                         tilesCurrent={this.state.tilesCurrent} 
                         changeCurrent={this.state.changeCurrent}
                         deletingCard={this.state.deletingCard}
                         handleDeleteCard={this.handleDeleteCard.bind(this)}/>
+                    <div className={this.state.searching?"search_box searching":"search_box"}>
+                        <img className="searchIcon" src={searchIcon} alt="searchIcon"/>
+                        <input type="text" onChange={(e)=>this.filterSearch(e.target.value)}/>
+                    </div>
                 </div>
             </div>
             {this.state.focus?

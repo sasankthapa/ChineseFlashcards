@@ -16,6 +16,8 @@ export interface DashboardState{
     focus:boolean;
     page:number;
     itemsOnPage:number;
+    searching:boolean;
+    displayingElements:Array<character>;
 }
 
 export interface DashboardProps{

@@ -24,9 +24,12 @@ const AddCardComponent:React.FC<AddCardComponentProps> = ({handleAddCard,closeFo
     const updatePinyin:formElement["handler"]=(e)=>{
         const val:string=e.target.value; 
         const lastCharacter=val.charAt(val.length-1);
+        console.log(lastCharacter);
         if(lastCharacter in validEntries){
             const newConverted= conv(val.slice(lastPinyinIndex));
             const toLoad=val.slice(0,lastPinyinIndex)+newConverted;
+            console.log(toLoad);
+            console.log(lastPinyinIndex);
             setPinyin(toLoad);    
             setLastIndex(toLoad.length);
         }else if(lastCharacter===' '){

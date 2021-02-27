@@ -33,6 +33,7 @@
     justify-items: center;
     grid-gap:30px;
     padding:15px 20px;
+    position: relative;
 }
 
 @media (max-width:888px){
@@ -47,6 +48,40 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         grid-template-rows: repeat(3,minmax(0,1fr));
     }
+}
+
+.search_box{
+    position: absolute;
+    top:10px;
+    right:10px;
+    z-index: 100;
+    max-width: 24px;
+    display: flex;
+    overflow: hidden;
+    transition: max-width 0.5s linear;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.search_box:hover{
+    max-width: 50%;
+}
+
+.searching{
+    max-width: 50%;
+}
+
+.search_box input{
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-left: 5px;
+    user-select: none;
+}
+
+.searchIcon{
+    width:24px;
+    height:28px;
+    margin-right:2px;
 }
 
 .clickable{

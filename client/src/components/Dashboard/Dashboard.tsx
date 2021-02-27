@@ -85,7 +85,7 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
     }
 
     private changePage = (todo:"next"|"prev") => {
-        let maxPage=Math.ceil(this.state.elements.length/this.state.itemsOnPage);
+        let maxPage=Math.ceil(this.state.displayingElements.length/this.state.itemsOnPage);
         let minPage=1;
         if(todo==="next"){
             if(this.state.page>=maxPage) return
@@ -124,7 +124,7 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
                 }
                 return false;
             })
-            this.setState({displayingElements:filtered,searching:true})
+            this.setState({page:1,displayingElements:filtered,searching:true})
         }
     }
 
@@ -139,7 +139,7 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
                 <p className="clickable" onClick={()=>this.setFocusingCard(true)}>Focus</p>
                 <p className="clickable" onClick={this.changeCurrentHandler}>Current: {getCurrent} </p>
                 <p><i onClick={()=>this.changePage("prev")}className="arrow left clickable"></i>Page: 
-{this.state.page}/{Math.ceil(this.state.elements.length/this.state.itemsOnPage)}<i onClick={()=>this.changePage("next")} className="arrow right clickable"></i>
+{this.state.page}/{Math.ceil(this.state.displayingElements.length/this.state.itemsOnPage)}<i onClick={()=>this.changePage("next")} className="arrow right clickable"></i>
                 </p>
             </div>
             <div className="scrollable">
@@ -157,7 +157,7 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
                 </div>
             </div>
             {this.state.focus?
-                <FocusComponent elements={this.state.elements} close={()=>{this.setFocusingCard(false)}}/>:''}
+                <FocusComponent elements={this.state.displayingElements} close={()=>{this.setFocusingCard(false)}}/>:''}
         </div>
     }
 }

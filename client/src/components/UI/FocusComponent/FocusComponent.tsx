@@ -1,4 +1,4 @@
-import React, { KeyboardEventHandler} from 'react';
+import React, { KeyboardEventHandler, useEffect, useRef} from 'react';
 import BoxComponent from '../../../hoc/BoxComponent/BoxComponent';
 import {tilesCurrent} from '../../../types/Dashboard';
 import {FocusCardComponentProps} from '../../../types/UI'
@@ -8,6 +8,8 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
     
     const [element,setElement] = React.useState(0);
     const [current,setCurrent] = React.useState<tilesCurrent>('inCharacter');
+
+    const control=useRef<HTMLDivElement>(null);
 
     const arr=['inCharacter','inPinyin','inMeaning'].filter((element)=>{
         if(element===current) return false;
@@ -33,7 +35,8 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
                 setElement(element+1); 
             }
         }else if(val==="prev"){
-            if(!(element-1<=0)){
+            console.log(element)
+            if(!(element-1<0)){
                 setElement(element-1)
             }
         }
@@ -58,10 +61,16 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
         }
     }
 
+    useEffect(()=>{
+        if(control.current){
+            control.current.focus()
+        }
+    },[]);
+
     const toDisplay=elements[element][getCurrent];
     const displayStyle=toDisplay.length>10?{fontSize:'30px'}:{};
     return <BoxComponent>
-        <div className="Focus" onKeyDown={keyDownHandler} tabIndex={0}>
+        <div ref={control} className="Focus" onKeyDown={keyDownHandler} tabIndex={0}>
             <p id="main" style={displayStyle}>{toDisplay}</p>            
             <span id="count">{element+1}/{elements.length}</span>
             <span className="clickable" id="next" onClick={()=>elementChangeHandler("next")}>Next</span>
@@ -69,6 +78,15 @@ const FocusComponent:React.FC<FocusCardComponentProps> = ({elements,close}) => {
             <span className="clickable" id="change1" onClick={()=>setCurrent(arr[0] as tilesCurrent)}>{changeToString(arr[0])}</span>
             <span className="clickable" id="change2" onClick={()=>setCurrent(arr[1] as tilesCurrent)}>{changeToString(arr[1])}</span>
             <span className="close_button clickable" onClick={()=>close()}>x</span>
+            <div className="tooltip">
+                ?
+                <span className="tooltiptext">You can use the arrow keys to move and 
+                change the character to pinyin or meaning and vice versa.
+                You can also use:
+                c - character,
+                m - meaning,
+                p - pinyin</span>
+            </div>
         </div>
     </BoxComponent>
 }

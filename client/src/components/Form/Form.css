@@ -9,6 +9,8 @@
     position:absolute;
     top:0px;
     right:10%;
+    width: 20px;
+    height: 20px;
 }
 
 .form *{
@@ -89,4 +91,9 @@
 
 .close-icon:after {
   transform: rotate(-45deg);
+}
+
+.small{
+    color:red;
+    font-size:0.5em;
 }

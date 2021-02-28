@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Header from './components/Header/Header';
-import SideDrawer from './components/Sidedrawer/SideDrawer';
+//import SideDrawer from './components/Sidedrawer/SideDrawer';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoginComponent from './components/UI/loginComponent/LoginComponent'
@@ -26,6 +26,12 @@ class App extends React.Component<{},AppState,{}>{
         registering:false
     }
 
+    componentDidMount(){
+        if(window.innerWidth<500){
+            alert("Not supported on phone yet, sorry, please try again on computer.");
+        }
+    }
+
     render(){
         let toRender:any='Please Login';
         if(this.state.loggingIn){
@@ -37,13 +43,13 @@ class App extends React.Component<{},AppState,{}>{
         }
         return (
             <div className="App">
-                <SideDrawer 
+                {/*<SideDrawer 
                     open={true}
                     name={this.state.name}
                     loginIn={()=>this.setLoggingIn(true)} 
                     logout={()=>this.handleLogout()}
                     register={()=>this.setRegistering(true)}
-                />
+                />*/}
                 <Header 
                     name={this.state.name}
                     loginIn={()=>this.setLoggingIn(true)} 

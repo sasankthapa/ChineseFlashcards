@@ -31,6 +31,7 @@ export type formElement = {
     value : string,
     handler : (e:ChangeEvent<HTMLInputElement>) => void;
     placeholder?:string;
+    helpText?:string;
 };
 
 export interface FormProps{

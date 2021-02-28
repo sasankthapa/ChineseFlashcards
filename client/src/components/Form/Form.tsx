@@ -11,8 +11,8 @@ const Form:React.FC<FormProps> = ({title,elements,buttonName,onClick,closeForm})
 
     return (
         <form className="form">
-            <div className="cross">
-                <i onClick={closeForm} className="close-icon clickable"></i>
+            <div onClick={closeForm} className="cross clickable">
+                <i className="close-icon"></i>
             </div>
             <h2>{title}</h2>
             {elements.map((element)=>{
@@ -24,6 +24,7 @@ const Form:React.FC<FormProps> = ({title,elements,buttonName,onClick,closeForm})
                         value={element.value}
                         type={element.type} 
                         id={element.label} />
+                    {element.helpText?<small className="small">{element.helpText}</small>:''}
                 </div>
             })}
             <button onClick={submit} type="submit">{buttonName}</button>

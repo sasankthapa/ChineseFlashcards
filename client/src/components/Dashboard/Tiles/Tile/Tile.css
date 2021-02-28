@@ -9,14 +9,14 @@
     align-items:center;
     border:3px solid black;
     border-radius:10px;
-    font-size: x-large;
+    font-size: 1.5em;
     overflow:hidden;
     cursor: pointer;
     user-select: none;
 }
 
 .tile p{
-    font-size: 40px;
+    font-size: 1.3em;
 }
 
 @media (max-width:750px){

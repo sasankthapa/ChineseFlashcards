@@ -24,11 +24,13 @@ const RegisterComponent:React.FC<RegisterComponentProps> = ({handleRegister,clos
     const registerElements:formElement[]=[
         {label:'Name',type:'text',value:name,handler:updateName},
         {label:'Email',type:'text',value:email,handler:updateEmail},
-        {label:'Password',type:'password',value:password,handler:updatePassword},
+        {label:'Password',type:'password',value:password,handler:updatePassword
+        ,helpText:'must be 7 characters'},
     ];
 
     const onClick:FormProps["onClick"]=()=>{
-        handleRegister(email,name,password); 
+        if(password.length>=7)
+            handleRegister(email,name,password); 
     }
 
     return <BoxComponent>

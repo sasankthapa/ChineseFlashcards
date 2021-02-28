@@ -110,6 +110,8 @@ class Dashboard extends React.Component<DashboardProps,DashboardState,{}>{
         if(this.state.elements.length===0){
             this.getAllCards();
         }
+        this.changeMaxElements(window.innerWidth,window.innerHeight);
+        console.log(window.innerWidth,window.innerHeight);
         window.addEventListener('resize', ()=>this.changeMaxElements(window.innerWidth,window.innerHeight));
     }
 

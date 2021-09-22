@@ -4,11 +4,25 @@ const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken');
 const Card=require('./card')
 
-const userSchema=new mongoose.Schema({
+const folderSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true,
         trim:true
+    },
+    data:[{
+        type:String,
+        required:false,
+        trim:true
+    }]
+})
+
+const userSchema=new mongoose.Schema({
+    username:{
+        type:String,
+        required:true,
+        trim:true,
+        unique:true
     },
     email:{
         type:String,
@@ -28,6 +42,7 @@ const userSchema=new mongoose.Schema({
         minlength:7,
         trim:true
     },
+    folders:[folderSchema],
     tokens:[{
         token:{
             type:String,
@@ -35,12 +50,6 @@ const userSchema=new mongoose.Schema({
         }
     }]
 });
-
-userSchema.virtual('usercards',{
-    ref:'Cards',
-    localField:'_id',
-    foreignField:'owner'
-})
 
 userSchema.methods.generateAuthToken = async function(){
     const user=this;
@@ -58,8 +67,6 @@ userSchema.methods.toJSON=function(){
     
     delete userObject.password;
     delete userObject.tokens;
-    delete userObject.avatar;
-    
     return userObject
 }
 
@@ -96,5 +103,18 @@ userSchema.pre('remove',async function(next){
 })
 
 const User=mongoose.model('User',userSchema)
+/*
+try{
+    const user=new User({
+        email:'thapas@beloit.edu',
+        username:'testlah',
+        password:'newpassword'
+    })
+    console.log(user)
+    user.save()
+}catch(e){
+    console.log(e)
+}
+*/
 
 module.exports=User

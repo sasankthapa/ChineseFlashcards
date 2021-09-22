@@ -2,6 +2,7 @@ const express=require('express');
 const {sendWelcomeEmail} =require('../email/emailer');
 
 const User=require('../models/user');
+const Character=require('../models/character');
 const auth=require('../middleware/auth');
 
 const router = new express.Router();
@@ -17,6 +18,37 @@ router.post('/users/register',async (req,res)=>{
     }catch(e){
         console.log(e)
         res.status(400).send(e);
+    }
+})
+
+router.post('/users/addword',auth,async(req,res)=>{
+    const user=req.body.user;
+    try{
+        user.folders.push[req.folderName,req.body.word]
+        await user.save();
+        res.status(201).send({success:true});
+    }catch(e){
+        console.log(e)
+        res.status(400).send(e.body);
+    }
+})
+
+router.post('/users/addworddb',auth,async(req,res)=>{
+    try{
+        const currChar=req.body.character;
+        if(currChar.length>1){
+            const root=await Character.findOne({character:req.body.character[0]})
+            console.log('root',root)
+        }else{
+            const character=new Character({
+                ...req.body
+            })
+            await character.save()
+        }
+        res.status(201).send({success:true});
+    }catch(e){
+        console.log(e);
+        res.status(400).send()
     }
 })
 

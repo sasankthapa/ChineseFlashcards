@@ -20,6 +20,7 @@ app.use(express.json())
 
 const userRouter=require('./routers/user');
 const cardRouter=require('./routers/card');
+const characterRouter=require('./routers/character');
 
 app.get('/',(req,res)=>{
     res.send('whhhoeuy');
@@ -27,6 +28,7 @@ app.get('/',(req,res)=>{
 
 app.use(userRouter);
 app.use(cardRouter);
+app.use(characterRouter);
 
 app.listen(process.env.PORT,()=>{
     console.log(`Listening on port ${process.env.PORT}`);

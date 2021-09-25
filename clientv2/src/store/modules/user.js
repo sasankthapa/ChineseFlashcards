@@ -3,7 +3,8 @@ import {loginAccount} from '../../api/axios'
 const user={
     namespaced:true,
     state:{
-        name:'Sasank',
+        loggedIn:false,
+        name:'',
         API_KEY:''
     },
     mutations:{
@@ -15,10 +16,9 @@ const user={
         }
     },
     actions:{
-        login(_,{email,password}){
-            loginAccount(email,password).then((data)=>{
-                console.log(data);
-            })
+        async loginUser(context,data){
+            const user=await loginAccount(data.username,data.password);
+            console.log(user)
         }
     },
     getters:{

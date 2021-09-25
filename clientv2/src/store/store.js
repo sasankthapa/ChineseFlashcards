@@ -2,10 +2,11 @@ import { createStore } from 'vuex'
 import userConfig from './modules/user'
 import folderComponentConfig from './modules/folder'
 import visualizerComponentConfig from './modules/visualizer'
+import contentManagerConfig from './modules/cm'
 
 const store=createStore({
     state:{
-        current:'main',
+        current:'',
         time:0,
         currentWord:'',
         visualize:'',
@@ -13,7 +14,19 @@ const store=createStore({
     modules:{
         user:userConfig,
         folder:folderComponentConfig,
-        visualize:visualizerComponentConfig
+        visualize:visualizerComponentConfig,
+        cm:contentManagerConfig
+    },
+    mutations:{
+        updateAppState(state,payload){
+            state.current=payload;
+        }
+    },
+    actions:{
+        switchCurrent(context,payload){
+            context.commit('updateAppState',payload);
+            context.dispatch('cm/updateContent')
+        }
     },
     getters:{
         currentState(state){

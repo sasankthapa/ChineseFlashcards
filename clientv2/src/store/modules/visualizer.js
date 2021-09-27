@@ -3,6 +3,7 @@ const visualizerComponentConfig={
     namespaced:true,
     state:{
         addingCard:false,
+        word_text:'',
         displayItems:[{selected:'',list:[]}]
     },
     mutations:{},

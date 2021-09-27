@@ -8,7 +8,7 @@ const store=createStore({
     state:{
         current:'',
         time:0,
-        currentWord:'',
+        currentWord:{},
     },
     modules:{
         user:userConfig,

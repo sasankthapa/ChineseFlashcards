@@ -1,5 +1,5 @@
 <template>
-    <div class="flex w-screen h-screen">
+    <div class="flex w-screen h-screen bg-gray-600">
         <div v-if="showLogin" class="flex flex-col items-center justify-center w-full h-full text-center transition-all">
             <LoginRegister />
         </div>

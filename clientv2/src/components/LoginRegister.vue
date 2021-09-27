@@ -1,5 +1,5 @@
 <template>
-    <div class="h-auto p-8 font-bold text-center bg-red-200 rounded-lg shadow-xl w-72">
+    <div class="h-auto p-8 font-bold text-center bg-purple-100 rounded-lg shadow-xl w-72">
         <h1 v-if="register" class="mb-3 text-lg ">Register</h1>
         <h1 v-else class="mb-3 text-lg ">Login</h1>
         <div class="p-1 text-left">

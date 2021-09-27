@@ -6,14 +6,14 @@
         <div v-if="showMainMenu" class="flex justify-center flex-shrink h-full align-center">
             <MainMenu />
         </div>
-        <div v-if="showFolder" class="flex justify-center flex-grow h-full align-center">
+        <div v-if="showFolder" class="flex justify-center flex-grow flex-shrink h-full align-center">
             <Folder />
         </div>
         <div v-if="showCards" class="flex justify-center h-full align-center">
             cardos
         </div>
-        <div v-if="showVisualizer" class="flex justify-center h-full align-center">
-            visualizer
+        <div v-if="showVisualizer" class="flex justify-center flex-grow h-full align-center">
+            <Visualizer />
         </div>
     </div>
 </template>
@@ -25,6 +25,7 @@ import { computed } from 'vue';
 import LoginRegister from './LoginRegister.vue';
 import MainMenu from './MainMenu.vue'
 import Folder from './Folder.vue'
+import Visualizer from './Visualizer.vue'
 
 export default {
     setup(){
@@ -51,7 +52,7 @@ export default {
             switchCurrent,
         };
     },
-    components:{LoginRegister,MainMenu,Folder}
+    components:{LoginRegister,MainMenu,Folder,Visualizer}
 }
 </script>
 

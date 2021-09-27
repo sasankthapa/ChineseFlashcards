@@ -37,14 +37,20 @@ const folderComponentConfig={
             context.commit('setFolderNames',names)
         },
         changeFolder(context,payload){
-            console.log(payload)
             context.commit('setCurrentFolder',payload);
             context.commit('setCurrView')
             console.log(context.state.currentFolder)
         },
         async createNewFolder(context,payload){
-            const res=await createFolder(context.rootState.user.API_KEY,payload)
-            console.log(res)
+            const folders=await createFolder(context.rootState.user.API_KEY,payload).data
+            console.log(folders)
+            const names=[];
+            folders.forEach((folder)=>{
+                names.push(folder.name)
+            })
+            context.commit('setFolderList',folders)
+            context.commit('setFolderNames',names)
+            context.commit('setFolderList',res.data)
         }
     }
 }

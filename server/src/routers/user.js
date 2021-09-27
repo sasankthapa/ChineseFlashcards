@@ -52,14 +52,14 @@ router.post('/users/addworddb',auth,async(req,res)=>{
     }
 })
 
-router.post('/users/newFolder:folderName',auth,async(req,res)=>{
+router.post('/users/newfolder',auth,async(req,res)=>{
     try{
         req.user.folders.push({
-            name:folderName,
+            name:req.body.foldername,
             data:[]
         })
         await req.user.save()
-        res.send(201)
+        res.send(req.user.folders)
     }catch(e){
         console.log(e)
         res.status(400).send();

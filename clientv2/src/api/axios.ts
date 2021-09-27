@@ -20,7 +20,7 @@ export const getFolders=async(api_key:string)=>{
 }
 
 export const createFolder=async(api_key:string,foldername:string)=>{
-    return await axios.get(baseUrl+'/users/folders?foldername='+foldername,getConfig(api_key));
+    return await axios.post(baseUrl+'/users/newfolder',{foldername},getConfig(api_key));
 }
 
 export const loginAccount:loginAccountType = async (email,password) => {

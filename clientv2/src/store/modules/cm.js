@@ -51,7 +51,7 @@ const contentManagerConfig={
             }
         },
         showVisualizer({commit},payload){
-            commit('setShowCards',payload)
+            commit('setShowVisualizer',payload)
         }
     },
     getters:{

@@ -9,7 +9,6 @@ const store=createStore({
         current:'',
         time:0,
         currentWord:'',
-        visualize:'',
     },
     modules:{
         user:userConfig,

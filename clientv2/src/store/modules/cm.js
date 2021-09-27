@@ -9,11 +9,11 @@ const contentManagerConfig={
     },                                                                          
     mutations:{                                                                 
         resetAll(state){
-            state.showLogin=payload;                                         
-            state.showMainMenu=payload;                                         
-            state.showFolder=payload;                                           
-            state.showVisualizer=payload;                                       
-            state.showCards=payload;                                            
+            state.showLogin=false;                                         
+            state.showMainMenu=false;                                         
+            state.showFolder=false;                                           
+            state.showVisualizer=false;                                       
+            state.showCards=false;                                            
         },
         setShowMainMenu(state,payload){                                         
             state.showMainMenu=payload;                                         
@@ -32,14 +32,14 @@ const contentManagerConfig={
         }                                                                       
     },
     actions:{
-        updateContent({state,commit}){
-            if(!state.user.loggedIn){
+        updateContent({rootState,commit}){
+            commit('resetAll')
+            if(!rootState.user.loggedIn){
                 return commit('setShowLogin',true)
             }
-            if(state==='')
+            if(rootState.current==='')
                 return
-            commit('resetAll')
-            switch(state){
+            switch(rootState.current){
                 case 'main':
                     commit('setShowMainMenu',true)
                     commit('setShowFolder',true)

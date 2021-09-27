@@ -2,7 +2,6 @@ import axios from 'axios';
 
 type loginAccountType = (arg1:string,arg2:string) => Promise<object|null>;
 type logoutAccountType = (arg1:string) => void;
-type registerAccountType = (name:string,email:string,password:string,arg3:(name:string,token:string)=>void)=>void;
 type addCardType = (token:string,meaning:string,pinyin:string,characters:string) => void
 //type deleteCardType= (token:string,id:string) => void
 
@@ -17,20 +16,19 @@ const getConfig = (token:string)=>{
 }
 
 export const loginAccount:loginAccountType = async (email,password) => {
-    return (await axios.post(baseUrl+'/users/login',{email,password})).data
+    return (await axios.post(baseUrl+'/users/login',{email,password}))
 }
 
 export const logoutAccount:logoutAccountType = (token) => {
     axios.post(baseUrl+'/users/logout',{},getConfig(token));
 }
 
-export const registerAccount:registerAccountType = (name,email,password,done) =>{
-    axios.post(baseUrl+'/users/register',{name,email,password})
-    .then((res)=>{
-        done(res.data.user.name.split(' ')[0],res.data.token)
-    }).catch((err)=>{
-        console.log(err);
-    })
+export const createAccount= async(username:string,email:string,password:string):Promise<Object> =>{
+    return await axios.post(baseUrl+'/users/register',{username,email,password})
+}
+
+export const loginUserWithKey=async(api_key:string)=>{
+    return await axios.get(baseUrl+'/me',getConfig(api_key))
 }
 
 export const getAllCards = async(token:string) => {

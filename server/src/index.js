@@ -4,7 +4,6 @@ const cors=require('cors');
 
 const app= express();
 
-const allowedOrigins = ['localhost:3000/']
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1) {

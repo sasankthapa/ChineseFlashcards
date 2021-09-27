@@ -9,6 +9,7 @@ const router = new express.Router();
 
 router.post('/users/register',async (req,res)=>{
     const user=new User(req.body)
+    user.folders={name:"bookmarks",data:[]}
 
     try{
         await user.save()
@@ -51,6 +52,20 @@ router.post('/users/addworddb',auth,async(req,res)=>{
     }
 })
 
+router.post('/users/newFolder:folderName',auth,async(req,res)=>{
+    try{
+        req.user.folders.push({
+            name:folderName,
+            data:[]
+        })
+        await req.user.save()
+        res.send(201)
+    }catch(e){
+        console.log(e)
+        res.status(400).send();
+    }
+})
+
 router.post('/users/login',async(req,res)=>{
     try{
         const user=await User.findByCredentials(req.body.email,req.body.password);
@@ -59,6 +74,15 @@ router.post('/users/login',async(req,res)=>{
     }catch(e){
         console.log(e);
         res.status(400).send();
+    }
+})
+
+router.get('/users/folders',auth,async(req,res)=>{
+    try{
+        console.log(req.user.folders)
+        res.send({folders:req.user.folders})
+    }catch(e){
+        console.log(e)
     }
 })
 

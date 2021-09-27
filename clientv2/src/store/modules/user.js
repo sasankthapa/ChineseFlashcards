@@ -25,16 +25,17 @@ const user={
         },
         async loginUser(context,{username,password}){
             const user=await loginAccount(username,password);
-            console.log(user.data.token)
             context.commit('setAPI_KEY',user.data.token)
+            context.commit('setLogin')
             context.dispatch('switchCurrent','main',{root:true})
-            console.log(user)
+            context.dispatch('folder/updateFolderInfo',null,{root:true})
         },
         async registerUser(context,{username,password,email}){
             const user=await createAccount(username,email,password);
             context.commit('setAPI_KEY',user.data.token)
+            context.commit('setLogin')
             context.dispatch('switchCurrent','main',{root:true})
-            console.log(user)
+            context.dispatch('updateFolderInfo',null,{root:true})
         }
     },
     getters:{

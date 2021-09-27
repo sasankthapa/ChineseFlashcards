@@ -49,6 +49,9 @@ const contentManagerConfig={
                     commit('setShowCards',true)
                 break;
             }
+        },
+        showVisualizer({commit},payload){
+            commit('setShowCards',payload)
         }
     },
     getters:{

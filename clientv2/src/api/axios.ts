@@ -15,6 +15,14 @@ const getConfig = (token:string)=>{
     }
 }
 
+export const getFolders=async(api_key:string)=>{
+    return (await axios.get(baseUrl+'/users/folders',getConfig(api_key))).data
+}
+
+export const createFolder=async(api_key:string,foldername:string)=>{
+    return await axios.get(baseUrl+'/users/folders?foldername='+foldername,getConfig(api_key));
+}
+
 export const loginAccount:loginAccountType = async (email,password) => {
     return (await axios.post(baseUrl+'/users/login',{email,password}))
 }

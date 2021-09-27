@@ -1,13 +1,13 @@
 <template>
-    <div v-if="showLogin" class="flex flex-col items-center justify-center w-screen h-screen text-center transition-all">
-        <LoginRegister />
-    </div>
-    <div v-else class="flex h-screen">
-        <div v-if="showMainMenu" class="flex justify-center h-full align-center">
-            main menu
+    <div class="flex w-screen h-screen">
+        <div v-if="showLogin" class="flex flex-col items-center justify-center w-full h-full text-center transition-all">
+            <LoginRegister />
         </div>
-        <div v-if="showFolder" class="flex justify-center h-full align-center">
-            folder
+        <div v-if="showMainMenu" class="flex justify-center flex-shrink h-full align-center">
+            <MainMenu />
+        </div>
+        <div v-if="showFolder" class="flex justify-center flex-grow h-full align-center">
+            <Folder />
         </div>
         <div v-if="showCards" class="flex justify-center h-full align-center">
             cardos
@@ -23,6 +23,8 @@ import { onMounted } from "@vue/runtime-core";
 import { useStore } from 'vuex'
 import { computed } from 'vue';
 import LoginRegister from './LoginRegister.vue';
+import MainMenu from './MainMenu.vue'
+import Folder from './Folder.vue'
 
 export default {
     setup(){
@@ -35,7 +37,7 @@ export default {
         onMounted(async()=>{
             const api_key=localStorage.getItem('API_KEY')
             if(api_key!==null){
-                await store.dispatch('user/loginUser',api_key)
+                await store.dispatch('user/refreshUser',api_key)
             }
             store.dispatch('cm/updateContent')
         });        
@@ -49,7 +51,7 @@ export default {
             switchCurrent,
         };
     },
-    components:{LoginRegister}
+    components:{LoginRegister,MainMenu,Folder}
 }
 </script>
 

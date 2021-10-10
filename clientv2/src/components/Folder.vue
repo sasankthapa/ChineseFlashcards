@@ -6,12 +6,13 @@
                 <button @click="addFolder()" class="px-2 ml-2 bg-blue-200 rounded-md">Add Folder</button>
                 <button class="px-2 ml-2 bg-blue-200 rounded-md">Visualize</button>
             </div>
-            <div class="flex flex-col w-full text-center text-md gap-x-3">
+            <div class="flex flex-row w-full p-2 text-center text-md gap-x-3">
                 <div v-if="currentFolder!==''" class="w-auto px-2 text-center bg-green-200 rounded-lg cursor-pointer">
                     {{currentFolder}}
                 </div>
                 <template v-for="name in folderNames">
-                    <div @click="changeFolder(name)" v-if="name!==currentFolder" v-bind:key="name" class="w-auto px-2 text-center bg-red-200 rounded-lg cursor-pointer">
+                    <div @click="changeFolder(name)" v-if="name!==currentFolder" v-bind:key="name" 
+                        class="w-auto px-2 text-center bg-red-200 rounded-lg cursor-pointer">
                         {{name}}
                     </div>
                 </template>

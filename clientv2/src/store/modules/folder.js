@@ -42,15 +42,14 @@ const folderComponentConfig={
             console.log(context.state.currentFolder)
         },
         async createNewFolder(context,payload){
-            const folders=await createFolder(context.rootState.user.API_KEY,payload).data
+            const folders=await createFolder(context.rootState.user.API_KEY,payload)
             console.log(folders)
             const names=[];
-            folders.forEach((folder)=>{
+            folders.data.forEach((folder)=>{
                 names.push(folder.name)
             })
             context.commit('setFolderList',folders)
             context.commit('setFolderNames',names)
-            context.commit('setFolderList',res.data)
         }
     }
 }

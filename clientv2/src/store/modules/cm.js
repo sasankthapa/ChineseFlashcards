@@ -43,6 +43,7 @@ const contentManagerConfig={
                 case 'main':
                     commit('setShowMainMenu',true)
                     commit('setShowFolder',true)
+                    commit('setShowVisualizer',true)
                 break;
                 case 'study':
                 case 'test':

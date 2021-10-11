@@ -1,12 +1,12 @@
 <template>
-    <div class="flex flex-col items-center justify-center p-10 gap-10">
-        <div @click="switchCurrent('study')" class="w-full px-10 py-8 text-2xl text-center bg-blue-300 cursor-pointer lg:px-20 hover:bg-gray-300 hover:ring transition-colors rounded-xl">
+    <div class="flex items-center justify-center p-4 font-bold text-white md:flex-col gap-2">
+        <div @click="switchCurrent('study')" class="p-2 bg-blue-800 rounded-sm">
             Study
         </div>
-        <div @click="switchCurrent('study')" class="w-full px-10 py-8 text-2xl text-center bg-blue-300 cursor-pointer lg:px-20 hover:bg-gray-300 transition-colors rounded-xl">
+        <div @click="switchCurrent('test')" class="p-2 bg-blue-800 rounded-sm">
             Test
         </div>
-        <div @click="switchCurrent('study')" class="w-full px-10 py-8 text-2xl text-center bg-blue-300 cursor-pointer lg:px-20 hover:bg-gray-300 transition-colors rounded-xl">
+        <div @click="addCard()" class="p-2 bg-blue-800 rounded-sm">
             Add Card
         </div>
     </div>
@@ -22,8 +22,13 @@ export default {
             store.dispatch('switchCurrent',curr);
         }
 
+        const addCard=()=>{
+
+        }
+
         return{
-            switchCurrent
+            switchCurrent,
+            addCard
         }
     },
 }

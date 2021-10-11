@@ -2,12 +2,31 @@
 const visualizerComponentConfig={
     namespaced:true,
     state:{
+        currentWord:'',
         addingCard:false,
-        word_text:'',
-        displayItems:[{selected:'',list:[]}]
+        word_array:[],
     },
-    mutations:{},
-    actions:{}
+    mutations:{
+        setUpdateWord(state,payload){
+            state.currentWord=payload;
+        },
+        setWordArray(state,payload){
+            state.word_array=payload;
+        },
+        setAddingCard(state,payload){
+            state.addingCard=payload;
+        }
+    },
+    actions:{
+        async wordChange(context,payload){
+            const word=Array.from(payload)
+            context.commit('setUpdateWord',payload);
+            context.commit('setWordArray',word);
+        },
+        setAddingCard(context,payload){
+            context.commit('setAddingCard',payload)
+        }
+    }
 }
 
 export default visualizerComponentConfig

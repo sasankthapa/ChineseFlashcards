@@ -1,19 +1,13 @@
 <template>
-    <div class="flex flex-col w-screen h-screen bg-gray-600 md:flex-row">
+    <div class="flex flex-col w-screen h-screen bg-gray-600 md:justify-evenly md:flex-row">
         <div v-if="showLogin" class="flex flex-col items-center justify-center w-full h-full text-center transition-all">
             <LoginRegister />
         </div>
-        <div v-if="showMainMenu">
-            <MainMenu />
-        </div>
-        <div v-if="showVisualizer" class="p-2">
-            <Visualizer />
-        </div>
-        <div v-if="showFolder" class="p-2">
-            <Folder />
-        </div>
+        <MainMenu v-if="showMainMenu"/>
+        <Visualizer v-if="showVisualizer"/>
+        <Folder v-if="showFolder"/>
         <div v-if="showCards" class="justify-center">
-            cardos
+
         </div>
     </div>
 </template>

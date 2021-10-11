@@ -1,10 +1,9 @@
 <template>
-    <div class="flex h-10 rounded-2xl bg-red-50">
-        <div v-if="addingCard">
-            <input @change="wordUpdate()" v-model="word" type="text" placeholder="Word"/>
-        </div>
-        <div>
-            Visual
+    <div class="flex items-center md:h-full">
+        <div class="flex w-64 h-3/4 rounded-2xl bg-red-50">
+            <div>
+                Visual
+            </div>
         </div>
     </div>
 </template>

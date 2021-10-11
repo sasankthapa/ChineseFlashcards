@@ -19,6 +19,9 @@
         <span v-if="register">Login</span>
         <span v-else>Register</span>
         </span>
+        <div class="p-4 bg-red-200 cursor-pointer" @click="fakeLogin">
+            fake
+        </div>
     </div>
 </template>
 
@@ -33,6 +36,10 @@ export default {
         const username=ref('')
         const email=ref('');
         const password=ref('');
+
+        const fakeLogin=()=>{
+            store.dispatch('user/fakeLogin');
+        }
 
         const loginUser=()=>{
             store.dispatch('user/loginUser',{
@@ -65,7 +72,8 @@ export default {
             email,
             password,
             switchCurrent,
-            submit
+            submit,
+            fakeLogin
         }
     }
 }

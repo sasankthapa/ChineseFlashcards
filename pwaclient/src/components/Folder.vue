@@ -28,8 +28,8 @@
     </div>
 </template>
 
-<script lang="ts">
-import { useStore } from 'vuex'
+<script>
+import { useStore } from '../store/index';
 import { defineComponent, computed, ref } from 'vue';
 
 export default defineComponent({
@@ -38,7 +38,7 @@ export default defineComponent({
         const addingFolder=ref(false)
         const text=ref('')
 
-        const changeFolder=(folderName:Array<any>)=>{
+        const changeFolder=(folderName)=>{
             store.dispatch('folder/changeFolder',folderName)
         }
 

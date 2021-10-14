@@ -1,8 +1,9 @@
 import { createStore, useStore as baseUseStore,Store } from 'vuex'
 import {InjectionKey} from 'vue';
-import userConfig from './modules/user'
-import folderComponentConfig from './modules/folder'
-import visualizerComponentConfig from './modules/visualizer'
+import cmConfig from './modules/cm';
+import userConfig from './modules/user';
+import folderComponentConfig from './modules/folder';
+import visualizerComponentConfig from './modules/visualizer';
 
 export interface IRootState{
     current:string,
@@ -19,6 +20,7 @@ export const store=createStore<IRootState>({
         currentWord:{},
     },
     modules:{
+        cm:cmConfig,
         user:userConfig,
         folder:folderComponentConfig,
         visualize:visualizerComponentConfig,

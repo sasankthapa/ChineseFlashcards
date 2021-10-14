@@ -1,8 +1,16 @@
+import { IRootState } from "@/store";
 import { Module } from "vuex";
 
-// --TODO-- corrent typings
-// To get correct typings need creating trees for mutations, getters and setters
-const visualizerComponentConfig:Module<any,any>={
+type Character={
+}
+
+interface IVLState {
+    currentWord:string,
+    addingCard:boolean,
+    word_array:Array<Character>,
+}
+
+const visualizerComponentConfig:Module<IVLState,IRootState>={
     namespaced:true,
     state:{
         currentWord:'',

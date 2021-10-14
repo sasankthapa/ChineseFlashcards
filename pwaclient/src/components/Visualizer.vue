@@ -8,8 +8,8 @@
     </div>
 </template>
 
-<script lang="ts">
-import { useStore } from 'vuex'
+<script>
+import { useStore } from '../store/index';
 import { defineComponent, computed, ref } from 'vue';
 
 export default defineComponent({

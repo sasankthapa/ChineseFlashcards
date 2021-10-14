@@ -25,10 +25,10 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
 import { ref } from '@vue/reactivity';
-import {useStore} from 'vuex';
+import { useStore } from '../store/index';
 
 export default defineComponent({
     setup(){

@@ -11,7 +11,7 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import { onMounted } from "@vue/runtime-core";
 import { computed, defineComponent } from 'vue';
 import { useStore } from '../store/index';
@@ -24,7 +24,7 @@ export default defineComponent({
     setup(){
         const store=useStore();
 
-        const switchCurrent=(curr:string)=>{
+        const switchCurrent=(curr)=>{
             store.dispatch('switchCurrent',curr);
         }
 

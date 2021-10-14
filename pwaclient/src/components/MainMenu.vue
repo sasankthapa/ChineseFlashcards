@@ -12,15 +12,15 @@
     </div>
 </template>
 
-<script lang="ts">
-import { useStore } from 'vuex'
+<script>
+import { useStore } from '../store/index';
 import {defineComponent } from 'vue';
 
 export default defineComponent({
     setup() {
         const store=useStore();
 
-        const switchCurrent=(curr:string)=>{
+        const switchCurrent=(curr)=>{
             store.dispatch('switchCurrent',curr);
         }
 

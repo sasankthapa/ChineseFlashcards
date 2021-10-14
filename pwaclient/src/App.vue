@@ -4,8 +4,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ContentManager from '@/components/ContentManager.vue';
-import Test from './components/test.vue'
+import './index.css'
+import ContentManager from './components/ContentManager.vue';
 
 export default defineComponent({
     setup(){

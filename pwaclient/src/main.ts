@@ -2,6 +2,7 @@ import { createApp, defineComponent, VueElement } from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 import { store,  key } from './store'
+
 const box=defineComponent({
     template:`
         <div>hello</div>

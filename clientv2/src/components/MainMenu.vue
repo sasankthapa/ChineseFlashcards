@@ -12,9 +12,11 @@
     </div>
 </template>
 
-<script>
-import { useStore } from 'vuex'
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useStore } from 'vuex';
+
+export default defineComponent({
     setup() {
         const store=useStore();
 
@@ -31,5 +33,5 @@ export default {
             addCard
         }
     },
-}
+})
 </script>

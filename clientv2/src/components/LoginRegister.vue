@@ -25,12 +25,13 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { ref } from '@vue/reactivity';
 import {useStore} from 'vuex';
 
-export default {
-    setup(){
+export default defineComponent({
+    setup() {
         const store=useStore();
         const register=ref(false);
         const username=ref('')
@@ -75,6 +76,6 @@ export default {
             submit,
             fakeLogin
         }
-    }
-}
+    },
+})
 </script>

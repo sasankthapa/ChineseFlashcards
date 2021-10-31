@@ -28,11 +28,12 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import { computed, ref } from 'vue';
 
-export default {
+export default defineComponent({
     setup() {
         const store=useStore();
         const addingFolder=ref(false)
@@ -58,5 +59,5 @@ export default {
             changeFolder
         }
     },
-}
+})
 </script>

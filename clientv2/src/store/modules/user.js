@@ -32,12 +32,13 @@ const user={
         },
         async registerUser(context,{username,password,email}){
             const user=await createAccount(username,email,password);
+            console.log('hello');
             context.commit('setAPI_KEY',user.data.token)
             context.commit('setLogin',true)
             context.dispatch('switchCurrent','main',{root:true})
-            context.dispatch('updateFolderInfo',null,{root:true})
+            context.dispatch('folder/updateFolderInfo',null,{root:true})
         },
-        fakeLogin(context){
+        async fakeLogin(context){
             context.commit('setAPI_KEY',null)
             context.commit('setLogin',true)
             context.dispatch('switchCurrent','main',{root:true})

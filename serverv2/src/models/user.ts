@@ -2,7 +2,7 @@ import { Model, Schema } from "mongoose";
 
 const mongoose=require('mongoose')
 const jwt=require('jsonwebtoken')
-const bcrypt=require('bcryptjs')
+const bcrypt=require('bcrypt')
 
 interface IFolder{
     name:string;

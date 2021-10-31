@@ -4,11 +4,12 @@ import CheckJWT from '../middleware/auth'
 
 const router:Router = Router();
 
-router.post('/ctw',(req,res)=>{
+router.get('/ctw',(req,res)=>{
+    console.log('hello')
     res.send('hello')
 })
 
-router.post('/authed',CheckJWT,(req,res)=>{
+router.get('/authed',CheckJWT,(req,res)=>{
     res.send('routed')
 })
 

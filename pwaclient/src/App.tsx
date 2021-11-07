@@ -13,7 +13,6 @@ function App() {
         <Switch>
             <Route path="/login" children={()=><Login/>} />
             <Route path="/register" children={()=><Register/>} />
-            <Route path="/" />
         </Switch>
     </Router>
   );

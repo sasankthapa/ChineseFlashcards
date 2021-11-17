@@ -5,6 +5,10 @@ module.exports = {
     extend: {
         colors:{
             current:'green',
+        },
+        fontFamily:{
+            'stylish':'Dancing Script',
+            'chin':'Noto Sans SC'
         }
     },
   },

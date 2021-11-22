@@ -13,8 +13,8 @@ interface IUser{
     username:string;
     email:string;
     password:string;
-    folders:Array<IFolder>;
     tokens:Array<string>
+    folders:Array<IFolder>;
 }
 
 interface IUserModels extends Model<IUser>{

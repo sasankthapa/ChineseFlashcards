@@ -3,8 +3,13 @@ import { Schema } from 'mongoose';
 import { ICharacter, ICharacterModel } from '../types/character.types';
 
 const CharacterSchema=new Schema<ICharacter,ICharacterModel>({
-    meaning:{
+    value:{
         type:String,
+        required:true,
+        trim:true
+    },
+    meaning:{
+       type:String,
         required:true,
         trim:true
     },
@@ -13,25 +18,15 @@ const CharacterSchema=new Schema<ICharacter,ICharacterModel>({
         required:true,
         trim:true
     },
-    char:{
+    POS:{
         type:String,
-        required:true,
-        trim:true
+        required:true
     },
-    parentNode:{
-        type:mongoose.Schema.Types.ObjectId,
-        required:false,
-        ref:'parent'
-    },
-    childNode:[{
+    parents:[{
         type:mongoose.Schema.Types.ObjectId,
         required:false,
         ref:'child'
     }],
-    POS:{
-        type:String,
-        required:false
-    },
 })
 
 const Character=mongoose.model<ICharacter,ICharacterModel>('Character',CharacterSchema);

@@ -1,15 +1,9 @@
-import { Application } from "express"
-import './db/db'
-import UserRouter from './routers/user';
+import app from './app'
 
-const express=require('express')
-const cors=require('cors')
+export const startServer=()=>{
+    return app.listen(process.env.PORT,()=>{
+        console.log(`App is listening on ${process.env.PORT}`)
+    })
+}
 
-const app:Application=new express()
-
-app.use(cors())
-app.use(UserRouter)
-
-app.listen(process.env.PORT,()=>{
-    console.log(`Running on port ${process.env.PORT}`)
-})
+startServer()

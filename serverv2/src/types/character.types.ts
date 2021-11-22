@@ -1,11 +1,10 @@
 import { Model, ObjectId } from "mongoose";
 
 export interface ICharacter{
-    char:string; //Make sure is chinese characters
+    value:string; //Make sure is chinese characters
     pinyin:string;
     meaning:string;
-    parentNode:ObjectId;
-    childNode:Array<ObjectId>;
+    parents:Array<ObjectId>;
     POS:string;
 }
 
